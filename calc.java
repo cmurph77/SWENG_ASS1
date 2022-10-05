@@ -22,10 +22,10 @@ public class calc {
    * @param input
    * @return true if the string in valid
    */
-  private static boolean checkValidInfix(String input){
+   static boolean checkValidInfix(String input){
     String[] seq = input.split("");
     // loop through sequence and check if number or operator
-    for(int i = 0; i <= seq.length; i++){
+    for(int i = 0; i < seq.length; i++){
       if(!isNumber(seq[i]) && !isOperator(seq[i])) return false;
     }
     return true;
@@ -36,14 +36,14 @@ public class calc {
    * @param op
    * @return true if the string is a valid infix operator as specified above
    */
-  private static boolean isOperator(String op){
-    for(int i = 0; i <= VALID_OPERATORS.length; i++ ){
+   static boolean isOperator(String op){
+    for(int i = 0; i < VALID_OPERATORS.length; i++ ){
       if(op.equals(VALID_OPERATORS[i])) return true;
     }
     return false; // return false here if op did not match any of the valid operators
   }
 
-  private static boolean isNumber(String num){
+   static boolean isNumber(String num){
     try {
        int x = Integer.parseInt(num);
        return true; // return true if the string can be parsed to an integer
