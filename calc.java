@@ -1,6 +1,8 @@
 package SWENG_ASS1;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Stack;
 
 public class calc {
 
@@ -43,6 +45,11 @@ public class calc {
     return false; // return false here if op did not match any of the valid operators
   }
 
+  /**
+   * @author cianmurphy
+   * @param num
+   * @return true if the string num can be parsed into an integer
+   */
    static boolean isNumber(String num){
     try {
        int x = Integer.parseInt(num);
@@ -52,7 +59,12 @@ public class calc {
     }
   }
 
-  private static void getInput(Boolean quit) throws Exception {
+  static boolean isBracket(String num){
+       if(num.equals("(") || num.equals(")")) return true;
+       else return false;
+  }
+
+   static void getInput(Boolean quit) throws Exception {
     BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in)); // read sys.in
     String input = "";
     String result = "";
@@ -70,7 +82,7 @@ public class calc {
     }
   }
 
-  private static String calculate(String input) throws Exception {
+   static String calculate(String input) throws Exception {
     // Need to split on + and -, then split on * and evaluate those numbers first *then* evaluate left to right on first split.
     // Right now just evaluates left to right with no respect to order of operation.
     String[] numbers = input.replaceAll("[+()-]+", " ").split(" ");
@@ -99,4 +111,21 @@ public class calc {
     }
     return String.valueOf(total);
   }
+
+//  static int evaluate(String input){
+//      Stack<Integer> num_stack = new Stack<>();
+//      Stack<String> op_stack = new Stack<>();
+//      ArrayList buffer = new ArrayList<>();
+//      for(int i = 0; i <input.length(); i++){
+//          String current = input.substring(i,i+1);
+//          if(isOperator(current)) op_stack.push(current) ;
+//          else if(isBracket(current)) {
+//              if(current.equals("(")) op_stack.push(current);
+//              else {  // current is a closing bracket
+//
+//              }
+//          }
+//      }
+//       return 0;
+//  }
 }
