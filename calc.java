@@ -10,7 +10,7 @@ public class calc {
   public static void main(String[] args) {
     try {
       // 12435+34569-12345*10+50
-      System.out.println("Software-Engineering-Calculator @CianMurphy @CianO'Grady\nType \"quit\" to quit");
+      System.out.println("Software-Engineering-Calculator @CianMurphy @CianO'Grady");
       boolean quit = false;
       getInput(quit);
     } catch (Exception e) {
@@ -69,7 +69,7 @@ public class calc {
     String input = "";
     String result = "";
     while (!quit) {
-      System.out.print("> Type \"quit\" to quit.\n> Enter expression: ");
+      System.out.print("Type \"quit\" to quit.\n> Enter expression to be evaluated: ");
       input = stdin.readLine();
       if (input.equals("quit")) {
         quit = true;
@@ -77,8 +77,14 @@ public class calc {
         System.exit(0);
       }
 
-      result = calculate(input);
-      System.out.println("| Result: " + result);
+      if(checkValidInfix(input)){
+          result = calculate(input);
+          System.out.println("| Result: " + result);
+      } else {
+          System.out.println("ERROR - The expression you have entered is not valid.");
+          System.out.println("Please make sure to only use integers and operators - , + or * ");
+      }
+
     }
   }
 
